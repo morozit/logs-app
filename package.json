@@ -6,8 +6,12 @@
   "scripts": {
     "start": "nodemon app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morozit/logs-app.git"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Moroz Roman",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.6",
