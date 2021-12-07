@@ -12,4 +12,6 @@ ENV PORT 4444
 
 EXPOSE $PORT
 
+VOLUME [ "app/data" ]
+
 CMD ["node", "app.js"]
