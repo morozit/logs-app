@@ -7,6 +7,8 @@ docker build .
 
 # command builds Docker images and gives a name
 
+# -t >>>> цим параметром задається імя образу
+
 docker build -t {name images}:{TAG} .
 
 <!-- --------------------------------------------------- -->
@@ -25,10 +27,6 @@ docker ps --help
 
 docker images
 
-# змінити images на локальну {teg} {itmorozr/}
-
-docker tag logsapp itmorozr/logsapp
-
 # delete images
 
 docker rmi {IMAGE ID}
@@ -39,11 +37,19 @@ docker images prune
 
 <!-- ---------------------------------------------------------- -->
 
-# docker run localhost
+# docker run => Запускай контейнер на основі вказаного образу
 
-# --rm після зупинки контейнер автоматично видаляється
+# -d >>>> без погрузки в консоль (можна дальше писати команди)
 
-docker run -d -p 3000:3000 --name {NAME_CONTAINER} --rm {IMAGE ID}:{TAG}
+# -p 3000:4444 >>>> порт {3000} локальний порт на локальній машині {4444} порт в докер контейнері (Dockerfile)
+
+# --name {NAME_CONTAINER} >>>> вказуємо назву контейнера
+
+# --rm >>>> після зупинки контейнер автоматично видаляється
+
+# {IMAGE ID}:{TAG} >>>>
+
+docker run -d -p 3000:4444 --name {NAME_CONTAINER} --rm {IMAGE ID}:{TAG}
 
 # docker run
 
@@ -64,10 +70,24 @@ docker container prune
 
 <!-- ---------------------------------------------------------- -->
 
+# VOLUME
+
+docker run -d -p 4444:4444 --rm -v save_logs:/app/data --name TEST_VOLUMES_CONTAINER itmorozr/logsapp:volume_01
+
+# ****\*\***** \*розробка в реальному часі\*
+
+docker run -d -p 4444:4444 --rm -v "D:\GitHub-test\logs-app\:/app" -v /app/node_modules -v save_logs:/app/data --name TEST_VOLUMES_CONTAINER itmorozr/logsapp:volume_01
+
+<!-- ---------------------------------------------------------- -->
+
+# стоврити новий образ на основі іншого з новим імям
+
+docker tag {IMAGE}:{tagname} itmorozr/{IMAGE}:{tagname}
+
 # push repository
 
+docker push {login}/{IMAGE}:{tagname}
 docker push itmorozr/logsapp:latest
-docker push itmorozr/logsapp:{tagname}
 
 <!-- ---------------------------------------------------------- -->
 
