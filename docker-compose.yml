@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "4444:4444"
+    env_file: ./config/.env
+    image: itmorozr/logsapp:dep
+volumes:
+  save_logs: null

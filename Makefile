@@ -1,13 +1,14 @@
 
 build:
 	docker build -t logsapp:new .
-run: 
-	docker run -d -p 4444:4444 --rm --name NAME_CONTAINER_1 logsapp:ver_02
 
-run-dev: 
-	docker run -d -p 4444:4444 --rm -v "D:\GitHub-test\logs-app\:/app" -v /app/node_modules  -v save_logs:/app/data --name TEST_VOLUMES_CONTAINER itmorozr/logsapp:volume_01
+run: 
+	docker run -d -p 4444:4444 --rm --name NAME_CONTAINER_1 logsapp:new
 
 stop:
-	docker stop NAME_CONTAINER
-
+	docker stop NAME_CONTAINER_1
+run-dev: 
+	docker run -d -p 4444:4444 --rm -v "D:\GitHub-test\logs-app\:/app" -v /app/node_modules  -v save_logs:/app/data --name temp_cont itmorozr/logsapp:dep
+push:
+	docker push itmorozr/logsapp:dep
 

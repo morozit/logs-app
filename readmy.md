@@ -87,7 +87,7 @@ docker tag {IMAGE}:{tagname} itmorozr/{IMAGE}:{tagname}
 # push repository
 
 docker push {login}/{IMAGE}:{tagname}
-docker push itmorozr/logsapp:latest
+docker push itmorozr/logsapp:dep
 
 <!-- ---------------------------------------------------------- -->
 
